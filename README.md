@@ -1,16 +1,9 @@
-# api_practice
+Nama : Arifah Nur Basyiroh Machi
+NIM : 362358302018
+Kelas :2B TRPL
 
-A new Flutter project.
+Tahap 1 : Konsumsi API gratis
+![alt text](image.png)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Tahap 2 : Konsumsi API dengan Styling dan Caching
+![alt text](image-1.png)

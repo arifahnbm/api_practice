@@ -8,10 +8,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Posts'),
+        title: Text('Photos Arifah'),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.lightBlue,
       ),
       body: FutureBuilder<List<dynamic>>(
-          future: apiService.fetchPosts(),
+          future: apiService.fetchPhotos(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
@@ -20,16 +22,40 @@ class HomeScreen extends StatelessWidget {
                 child: Text('Error: ${snapshot.error}'),
               );
             } else {
-              return ListView.builder(
+              return GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                  ),
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(snapshot.data![index]['title']),
-                      subtitle: Text(snapshot.data![index]['body']),
+                    return Card(
+                      elevation: 5,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Image.network(
+                            snapshot.data![index]['thumbnailUrl'],
+                            fit: BoxFit.cover,
+                            height: 120,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              snapshot.data![index]['title'],
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          )
+                        ],
+                      ),
                     );
                   });
             }
           }),
+      backgroundColor: Colors.white,
     );
   }
 }
